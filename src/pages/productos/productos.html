@@ -6,7 +6,7 @@
       <button ion-button icon-only (click)="navigateToAgregarProductoPage()">
         <ion-icon name='add'></ion-icon>
       </button>
-      <button ion-button icon-only (click)="navigateToAgregarProductoPage()">
+      <button ion-button icon-only (click)="navigateToEditProductoPage()">
           <ion-icon name='create'></ion-icon>
         </button>
     </ion-buttons>
@@ -16,5 +16,15 @@
 
 
 <ion-content padding>
+
+  <ion-list>
+    <ion-item *ngFor="let product of productList">
+      <ion-icon name = "cart" item-start></ion-icon>
+      <h3>Nombre: {{product.name}}</h3>
+      <h2>Precio: {{product.price}}</h2>
+      <h2>Categoria: {{ product.category }}</h2>
+      <h2>Localización: {{ product.location }}</h2>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

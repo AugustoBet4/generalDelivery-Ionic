@@ -16,7 +16,6 @@ import { Producto } from '../../models/products';
 })
 export class AgregarProductosPage implements OnInit {
 
-  public a=1;
   public form: FormGroup;
   product: AngularFireList<any>;
 
