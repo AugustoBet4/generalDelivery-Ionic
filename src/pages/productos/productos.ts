@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from '@firebase/util';
-import { map } from 'rxjs/operators';
 import { isEmpty } from '@firebase/util';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Platform } from 'ionic-angular';
+
 
 //PAGINAS
 import { AgregarProductosPage } from '../agregar-productos/agregar-productos';
@@ -12,13 +14,8 @@ import { EditarProductoPage } from '../editar-producto/editar-producto';
 //SERVICIOS
 import { Producto } from '../../models/products';
 import { ProductProvider } from '../../providers/product/product';
-
-/**
- * Generated class for the ProductosPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { LoginPage } from '../login/login';
+import { platformBrowser } from '@angular/platform-browser';
 
 @IonicPage()
 @Component({
@@ -34,11 +31,15 @@ export class ProductosPage {
   constructor(public productService: ProductProvider,
               public navCtrl: NavController,
               public navParams: NavParams,
-              private db: AngularFireDatabase) {
+              public af: AngularFireAuth,
+              private db: AngularFireDatabase,
+              private plt: Platform,
+              private toastr: ToastController) {​
   }
 
   ngOnInit() {
-    this.subscription = this.productService.getProducts()
+    if (this.af.auth.currentUser !== null){
+      this.subscription = this.productService.getProducts()
       .snapshotChanges()
       .subscribe(item => {
       this.productList = [];
@@ -48,6 +49,11 @@ export class ProductosPage {
         this.productList.push(x as Producto);
       });
     });
+    }
+    else{
+      this.af.auth.signOut();
+      this.navCtrl.push(LoginPage);
+    }
   }
 
   empty(){

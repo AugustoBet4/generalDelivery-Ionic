@@ -4,12 +4,13 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Producto } from '../../models/products';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { ProductosPage } from '../../pages/productos/productos';
 
 @Injectable()
 export class ProductProvider {
 
   productList: AngularFireList<any>;
-  selectedProduct: Producto;
+  selectedProduct: Producto = new Producto();
 
   constructor(public http: HttpClient,
               private firebase: AngularFireDatabase,
@@ -17,7 +18,7 @@ export class ProductProvider {
   }
 
   getProducts() {
-    return this.productList = this.firebase.list('/products/');
+    return this.productList = this.firebase.list('users/' + this.af.auth.currentUser.uid + '/products/');
   }
 
   insertProducts(product:Producto) {
@@ -34,7 +35,7 @@ export class ProductProvider {
       name: product.name,
       category: product.category,
       location: product.location,
-      price: product.price
+      price: product.price     
     });
   }
 

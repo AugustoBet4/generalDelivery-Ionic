@@ -13,90 +13,89 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding text-center>
   <div class="alert alert-warning m-2" *ngIf="!empty()">
     <h5 class="text-center text-warning">Ingrese algun producto.</h5>
   </div>
-  <div *ngIf="empty()">
-    <h5 class="text-center">Lista de Productos</h5>
-    <table class="table table-responsive table-sm table-hover">
+  <div class="card" *ngIf="empty()">
+    <div class="card-body">
+      <h3>Lista de Productos</h3>
+      <table class="table table-responsive table-hover">
         <thead>
           <th>Nombre</th>
           <th>Categoria</th>
+          <th>Precio</th>
           <th colspan="2">Opciones</th>
         </thead>
         <tbody>
           <tr *ngFor="let product of productList">
             <td>{{ product.name }}</td>
             <td>{{ product.location }}</td>
+            <td>{{ product.price }}</td>
             <td>
               <a class="btn btn-secondary text-white" (click)="[onEdit(product), isOn = true]">
-                <i class="far fa-edit"></i>
+               <i class="far fa-edit"></i>
               </a>
             </td>
             <td>
               <a class="btn btn-danger text-white" (click)="onDelete(product.$key)">
-                <i class="fas fa-trash-alt"></i>
+              <i class="fas fa-trash-alt"></i>
               </a>
             </td>
           </tr>
         </tbody>
       </table>
-  </div>
-  <div class="card" *ngIf="isOn">
-      <div class="card-body text-center">
-        <form #productForm="ngForm" (ngSubmit)='onSubmit(productForm)'>
-          <input type="hidden" name="$key" #$key="ngModel"[(ngModel)]="productService.selectedProduct.$key">
-          <div class="form-group">
-            <input type="text"
-              class="form-control"
-              name="name"
-              #name="ngModel"
-              [(ngModel)]="productService.selectedProduct.name"
-              placeholder="Agrega nombre del producto"
-            >
-          </div>
-    
-          <div class="form-group">
-            <input type="text"
-              class="form-control"
-              name="category"
-              #category="ngModel"
-              [(ngModel)]="productService.selectedProduct.category"
-              placeholder="Agrega categoria del producto"
-            >
-          </div>
-    
-          <div class="form-group">
-            <input type="text"
-              class="form-control"
-              name="location"
-              #location="ngModel"
-              [(ngModel)]="productService.selectedProduct.location"
-              placeholder="Agrega localización del producto"
-            >
-          </div>
-    
-          <div class="form-group">
-              <input type="text"
-                class="form-control"
-                name="price"
-                #price="ngModel"
-                [(ngModel)]="productService.selectedProduct.price"
-                placeholder="Agrega precio del producto"
-              >
-            </div>
-    
-            <div class="form-group">
-              <button class="btn btn-primary" type="submit">
-                <i class="fas fa-plus-circle"></i> Modificar
-              </button>
-              <button class="btn btn-secondary" type="reset" (click)="[resetForm(productForm), isOn = false]">
-                <i class="fas fa-sync-alt"></i> Descartar
-              </button>
-            </div>
-        </form>
-      </div>
     </div>
+  </div>
+  <br>
+  <!-- <div class="card" *ngIf="isOn"> -->
+      <!-- <div class="card-body text-center"> -->
+    <section *ngIf="isOn">
+      <ion-item-group>
+        <form [formGroup]="form" (ngSubmit)='onSubmit(form.value)'>
+          <ion-list no line formGroupName="product">
+              <ion-item hidden>
+                <ion-input type="text"
+                  formControlName="$key"
+                  [(ngModel)]="productService.selectedProduct.$key"></ion-input>
+              </ion-item>
+              
+              <ion-item>
+                <ion-label floating>Nombre del producto</ion-label>
+                <ion-input type="text"
+                  formControlName="name"
+                  [(ngModel)]="productService.selectedProduct.name"></ion-input>
+              </ion-item>
+              
+              <ion-item>
+                <ion-label floating>Categoria del Producto</ion-label>
+                <ion-input type="text"
+                  formControlName="category"
+                  [(ngModel)]="productService.selectedProduct.category"></ion-input>
+              </ion-item>
+              
+              <ion-item>
+                <ion-label floating>Localización del Producto</ion-label>
+                <ion-input type="text"
+                  formControlName="location"
+                  [(ngModel)]="productService.selectedProduct.location"></ion-input>
+              </ion-item>
+              
+              <ion-item>
+                <ion-label floating>Precio del producto</ion-label>
+                  <ion-input type="text"
+                    formControlName="price"
+                    [(ngModel)]="productService.selectedProduct.price"></ion-input>
+              </ion-item>
+              
+               <div padding text-center>
+                <button ion-button [disabled]="!form.valid" (click)="onSubmit()">Modificar</button>
+                <button ion-button color='dark' type="reset" (click)="[resetForm(productForm), isOn = false]">Descartar
+                </button>
+              </div>
+          </ion-list>
+        </form>
+      </ion-item-group>
+    </section>
 
 </ion-content>

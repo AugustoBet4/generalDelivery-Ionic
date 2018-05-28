@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "386662265208",
+    "firebase_url": "https://generaldelivery-1a3f7.firebaseio.com",
+    "project_id": "generaldelivery-1a3f7",
+    "storage_bucket": "generaldelivery-1a3f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:386662265208:android:764d2cb7da3280eb",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "386662265208-ik1it2deng0sqtr1cqkel0ebnpbfsa8e.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "386662265208-ik1it2deng0sqtr1cqkel0ebnpbfsa8e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0zcjJqU-r1A4HeiUkP9WFU0GkCEizFJ4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

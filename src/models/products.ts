@@ -1,4 +1,4 @@
-export interface Producto {
+export class Producto {
     $key: string;
     name: string;
     category: string;

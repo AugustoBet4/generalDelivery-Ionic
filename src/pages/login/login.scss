@@ -1,3 +1,15 @@
 page-login {
 
 }
+.toastcorrect {
+    > div{ 
+        background-color:green!important;
+        color:white !important;
+    }
+}
+.toastwarming {
+    > div{ 
+        background-color:red!important;
+        color:white !important;
+    }
+}
