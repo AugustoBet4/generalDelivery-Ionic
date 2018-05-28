@@ -14,27 +14,39 @@
 
 
 <ion-content padding>
-  <ion-item>
-    <ion-label floating>Nombre del producto</ion-label>
-    <ion-input type="text" [(ngModel)]="productos.name" ></ion-input>
-  </ion-item>
-  
-  <ion-item>
-    <ion-label floating>Categoria del producto</ion-label>
-    <ion-input type="text" [(ngModel)]="productos.category" ></ion-input>
-  </ion-item>
-  
-  <ion-item>
-    <ion-label floating>Localización del producto</ion-label>
-    <ion-input type="text" [(ngModel)]="productos.location" ></ion-input>
-  </ion-item>
-  
-  <ion-item>
-    <ion-label floating>Precio del producto</ion-label>
-    <ion-input type="number" [(ngModel)]="productos.price" ></ion-input>
-  </ion-item>
-  
-  <button ion-button block (click)="agregarProducto(productos)">
-    Agregar Producto
-  </button>
+  <section>
+    <ion-item-group>
+        <form [formGroup]="form" (ngSubmit)="agregarProducto(form.value)">
+          <ion-list no-line>
+            <!-- <ion-item>
+              <ion-input hidden formControlName="$key"></ion-input>
+            </ion-item> -->
+
+            <ion-item>
+              <ion-label floating>Agrega el nombre del producto</ion-label>
+              <ion-input formControlName="name" type="text"></ion-input>
+            </ion-item>
+      
+            <ion-item>
+              <ion-label floating>Agrega la categoria del producto</ion-label>
+              <ion-input formControlName="category" type="text"></ion-input>
+            </ion-item>
+      
+            <ion-item>
+              <ion-label floating>Agrega la localización del producto</ion-label>
+              <ion-input formControlName="location" type="text"></ion-input>
+            </ion-item>
+      
+            <ion-item>
+              <ion-label floating>Agrega el precio del producto</ion-label>
+              <ion-input formControlName="price" type="number"></ion-input>
+            </ion-item>
+          </ion-list>
+          <div padding>
+              <button ion-button [disabled]="!form.valid" (click)="agregarProducto(productos)">Agregar</button>
+              <button ion-button color="dark" type="reset">Borrar</button>
+          </div>
+        </form>
+    </ion-item-group>
+  </section>
 </ion-content>
