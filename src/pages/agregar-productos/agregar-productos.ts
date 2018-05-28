@@ -34,7 +34,7 @@ export class AgregarProductosPage implements OnInit {
               private _FB: FormBuilder) {
 
     this.form = _FB.group({
-      'key': ['', Validators.required],
+      'key': [],
       'name': ['', Validators.required],
       'category': ['', Validators.required],
       'location': ['', Validators.required],
