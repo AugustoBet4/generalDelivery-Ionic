@@ -4,22 +4,30 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+import { AngularFireModule } from 'angularfire2';
+import { FIREBASE_CREDENTIALS } from './firebase.credentials';
+
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { ProductosPage } from '../pages/productos/productos';
+import { AgregarProductosPage } from '../pages/agregar-productos/agregar-productos';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    ProductosPage,
+    AgregarProductosPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    //Inicializar Firebase con credenciales
+    AngularFireModule.initializeApp(FIREBASE_CREDENTIALS)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    ProductosPage,
+    AgregarProductosPage
   ],
   providers: [
     StatusBar,
