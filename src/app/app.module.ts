@@ -16,6 +16,7 @@ import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
 import { MyApp } from './app.component';
 import { ProductosPage } from '../pages/productos/productos';
 import { AgregarProductosPage } from '../pages/agregar-productos/agregar-productos';
+import { EditarProductoPage } from '../pages/editar-producto/editar-producto';
 
 //SERVICIOS
 import { ProductProvider } from '../providers/product/product';
@@ -24,7 +25,8 @@ import { ProductProvider } from '../providers/product/product';
   declarations: [
     MyApp,
     ProductosPage,
-    AgregarProductosPage
+    AgregarProductosPage,
+    EditarProductoPage
   ],
   imports: [
     HttpModule,
@@ -40,7 +42,8 @@ import { ProductProvider } from '../providers/product/product';
   entryComponents: [
     MyApp,
     ProductosPage,
-    AgregarProductosPage
+    AgregarProductosPage,
+    EditarProductoPage
   ],
   providers: [
     StatusBar,

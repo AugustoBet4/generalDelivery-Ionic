@@ -44,7 +44,7 @@
           </ion-list>
           <div padding>
               <button ion-button [disabled]="!form.valid" (click)="agregarProducto(productos)">Agregar</button>
-              <button ion-button color="dark" type="reset">Borrar</button>
+              <button ion-button color="dark" type="reset" (click)="resetForm(form)">Borrar</button>
           </div>
         </form>
     </ion-item-group>

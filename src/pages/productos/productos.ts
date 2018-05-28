@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AgregarProductosPage } from '../agregar-productos/agregar-productos';
-
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-
-import { Producto } from '../../models/products';
 import { Observable } from '@firebase/util';
 import { map } from 'rxjs/operators';
 
+//PAGINAS
+import { AgregarProductosPage } from '../agregar-productos/agregar-productos';
+import { EditarProductoPage } from '../editar-producto/editar-producto';
+
+//SERVICIOS
+import { Producto } from '../../models/products';
 import { ProductProvider } from '../../providers/product/product';
 
 /**
@@ -54,9 +56,9 @@ export class ProductosPage {
     this.navCtrl.push(AgregarProductosPage);
   }
 
-  // navigateToEditProductoPage() {
-  //   //Redirecciona al usuario a editar producto
-  //   this.navCtrl.push(ModificarProductosPage);
-  // }
+  navigateToEditProductoPage() {
+    //Redirecciona al usuario a editar producto
+    this.navCtrl.push(EditarProductoPage);
+  }
 
 }

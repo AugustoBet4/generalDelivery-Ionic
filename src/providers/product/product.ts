@@ -5,12 +5,6 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Producto } from '../../models/products';
 import { AngularFireAuth } from 'angularfire2/auth';
 
-/*
-  Generated class for the ProductProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class ProductProvider {
 
@@ -20,11 +14,32 @@ export class ProductProvider {
   constructor(public http: HttpClient,
               private firebase: AngularFireDatabase,
               private af: AngularFireAuth) {
-    console.log('Hello ProductProvider Provider');
   }
 
   getProducts() {
     return this.productList = this.firebase.list('/products/');
+  }
+
+  insertProducts(product:Producto) {
+    this.productList.push({
+      name: product.name,
+      category: product.category,
+      location: product.location,
+      price: product.price
+    });
+  }
+
+  updateProduct(product: Producto) {
+    this.productList.update(product.$key, {
+      name: product.name,
+      category: product.category,
+      location: product.location,
+      price: product.price
+    });
+  }
+
+  deleteProduct($key: string) {
+    this.productList.remove($key);
   }
 
 }

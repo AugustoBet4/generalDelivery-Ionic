@@ -2,11 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { NgForm } from '@angular/forms';
 
-// Service
+//PAGINAS
+import { ProductosPage } from '../productos/productos';
+
+//SERVICIOS
 import { ToastController } from 'ionic-angular';
+import { ProductProvider } from '../../providers/product/product';
 
-// Product Interface
+// PRODUCTO INTERFACE
 import { Producto } from '../../models/products';
 
 @IonicPage()
@@ -19,7 +24,8 @@ export class AgregarProductosPage implements OnInit {
   public form: FormGroup;
   product: AngularFireList<any>;
 
-  constructor(public toastr: ToastController,
+  constructor(public productService: ProductProvider,
+              public toastr: ToastController,
               public navCtrl: NavController,
               private database: AngularFireDatabase,
               public navParams: NavParams,
@@ -50,13 +56,14 @@ export class AgregarProductosPage implements OnInit {
 
   agregarProducto(producto: Producto) {
     if (producto != undefined){
-      console.log(producto);
-      this.product.push({
-        name: producto.name,
-        category: producto.category,
-        location: producto.location,
-        price: producto.price
-      });
+      this.productService.insertProducts(producto);
+      // console.log(producto);
+      // this.product.push({
+      //   name: producto.name,
+      //   category: producto.category,
+      //   location: producto.location,
+      //   price: producto.price
+      // });
       let toaster = this.toastr.create({
         message: 'Operación Exitosa\n Producto Agregado',
         duration: 3000,
@@ -64,13 +71,12 @@ export class AgregarProductosPage implements OnInit {
         cssClass: 'toastcorrect'
       });
       toaster.present();
+      this.navCtrl.push(ProductosPage);
     }
   }
-  // resetForm(productForm?: NgForm) {
-  //   if (productForm != null){
-  //     productForm.reset();
-  //     this.productService.selectedProduct = new Producto();
-  //   }
-  // }
-
+  resetForm(productForm?: NgForm) {
+    if (productForm != null){
+      productForm.reset();
+    }
+  }
 }
