@@ -14,31 +14,27 @@
 
 
 <ion-content padding>
-  <div class="card">
-    <div class="card-body">
-        <ion-item>
-            <ion-label floating>Nombre del producto</ion-label>
-            <ion-input type="text"></ion-input>
-          </ion-item>
-        
-          <ion-item>
-            <ion-label floating>Categoria del producto</ion-label>
-            <ion-input type="text"></ion-input>
-          </ion-item>
-        
-          <ion-item>
-            <ion-label floating>Localización del producto</ion-label>
-            <ion-input type="text"></ion-input>
-          </ion-item>
-        
-          <ion-item>
-            <ion-label floating>Precio del producto</ion-label>
-            <ion-input type="number"></ion-input>
-          </ion-item>
-        
-          <button ion-button block >
-            Agregar
-          </button>
-    </div>
-  </div>
+  <ion-item>
+    <ion-label floating>Nombre del producto</ion-label>
+    <ion-input type="text" [(ngModel)]="productos.name" ></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label floating>Categoria del producto</ion-label>
+    <ion-input type="text" [(ngModel)]="productos.category" ></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label floating>Localización del producto</ion-label>
+    <ion-input type="text" [(ngModel)]="productos.location" ></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label floating>Precio del producto</ion-label>
+    <ion-input type="number" [(ngModel)]="productos.price" ></ion-input>
+  </ion-item>
+  
+  <button ion-button block (click)="agregarProducto(productos)">
+    Agregar
+  </button>
 </ion-content>

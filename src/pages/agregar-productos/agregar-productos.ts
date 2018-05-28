@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the AgregarProductosPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Producto } from '../../models/products';
 
 @IonicPage()
 @Component({
@@ -15,11 +9,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AgregarProductosPage {
 
+  productos = {} as Producto;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AgregarProductosPage');
+  agregarProducto(productos: Producto) {
+    console.log(productos);
   }
 
 }
