@@ -1,0 +1,8 @@
+{
+  "name": "generalDelivery-Ionic",
+  "app_id": "c58f3c20",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
