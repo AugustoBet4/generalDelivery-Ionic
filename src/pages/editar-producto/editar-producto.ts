@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IonicPage, NavController, NavParams, Toast } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { element } from 'protractor';
 import { Subscription } from 'rxjs/Subscription';
 import { isEmpty } from '@firebase/util';
 
@@ -54,17 +53,30 @@ export class EditarProductoPage {
   }
   
   onDelete($key: string) {
-    if (confirm('Esta seguro de eliminar?')) {
-      this.productService.deleteProduct($key);
-      let toaster = this.toastr.create({
-        message: 'Operación Exitosa\n Producto Eliminado',
-        duration: 3000,
-        position: 'top',
-        cssClass: 'toastcorrect'
+    let toaster = this.toastr.create({
+      message: 'Esta seguro\n Se eliminar el producto',
+      position: 'top',
+      cssClass: 'toastwarming',
+      showCloseButton: true,
+      closeButtonText: "Seguro?"
+    });
+    let closedByTimeout = false;
+    let timeoutHandle = setTimeout(() => { closedByTimeout = true; toaster.dismiss(); }, 5000);
+    toaster.onDidDismiss(() => {
+      if(!closedByTimeout){
+        this.productService.deleteProduct($key);
+        let toaster = this.toastr.create({
+          message: 'Operación Exitosa\n Producto Eliminado',
+          duration: 3000,
+          position: 'top',
+          cssClass: 'toastcorrect'
       });
       toaster.present();
-    }
-  }
+      }
+    });
+
+    toaster.present();
+  }  
 
   onSubmit(productForm: NgForm) {
     this.productService.updateProduct(productForm.value);

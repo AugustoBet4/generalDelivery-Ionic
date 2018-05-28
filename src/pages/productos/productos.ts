@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from '@firebase/util';
 import { map } from 'rxjs/operators';
+import { isEmpty } from '@firebase/util';
 
 //PAGINAS
 import { AgregarProductosPage } from '../agregar-productos/agregar-productos';
@@ -49,7 +50,12 @@ export class ProductosPage {
     });
   }
 
-
+  empty(){
+    if(!isEmpty(this.productList))
+      return true;
+    else
+      return false;
+  }
 
   navigateToAgregarProductoPage() {
     //Redirecciona al usuario a agregar producto

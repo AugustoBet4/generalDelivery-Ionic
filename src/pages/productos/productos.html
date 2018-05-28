@@ -16,8 +16,10 @@
 
 
 <ion-content padding>
-
-  <ion-list>
+  <div class="alert alert-warning m-2" *ngIf="!empty()">
+    <h5 class="text-center text-warning">Ingrese productos para empezar</h5>
+  </div>
+  <ion-list *ngIf="empty()">
     <ion-item *ngFor="let product of productList">
       <ion-icon name = "cart" item-start></ion-icon>
       <h3>Nombre: {{product.name}}</h3>

@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="dark">
     <ion-title>Editar Producto</ion-title>
   </ion-navbar>
 
@@ -18,18 +18,16 @@
     <h5 class="text-center text-warning">Ingrese algun producto.</h5>
   </div>
   <div *ngIf="empty()">
-    <h6 class="text-center">Lista de Productos</h6>
+    <h5 class="text-center">Lista de Productos</h5>
     <table class="table table-responsive table-sm table-hover">
         <thead>
           <th>Nombre</th>
           <th>Categoria</th>
-          <th>Localización</th>
           <th colspan="2">Opciones</th>
         </thead>
         <tbody>
           <tr *ngFor="let product of productList">
             <td>{{ product.name }}</td>
-            <td>{{ product.category }}</td>
             <td>{{ product.location }}</td>
             <td>
               <a class="btn btn-secondary text-white" (click)="[onEdit(product), isOn = true]">
