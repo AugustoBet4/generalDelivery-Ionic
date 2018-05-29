@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, Modal } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
@@ -23,10 +23,12 @@ import { EditarProductoPage } from '../pages/editar-producto/editar-producto';
 import { LoginPage } from '../pages/login/login';
 import { EmailPage } from '../pages/login/email/email';
 import { SignupPage } from '../pages/login/signup/signup';
+import { BrandPage } from '../pages/brand/brand';
 
 //SERVICIOS
 import { ProductProvider } from '../providers/product/product';
 import { UserProvider } from '../providers/user/user';
+import { ModalPage } from '../pages/brand/modal/modal';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { UserProvider } from '../providers/user/user';
     EditarProductoPage,
     LoginPage,
     EmailPage,
-    SignupPage
+    SignupPage,
+    BrandPage,
+    ModalPage
   ],
   imports: [
     HttpModule,
@@ -59,7 +63,9 @@ import { UserProvider } from '../providers/user/user';
     EditarProductoPage,
     LoginPage,
     EmailPage,
-    SignupPage
+    SignupPage,
+    BrandPage,
+    ModalPage
   ],
   providers: [
     StatusBar,

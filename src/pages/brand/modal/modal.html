@@ -1,0 +1,38 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Modal Pedido</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <section>
+    <ion-item-group>
+      <form [formGroup]="form" (ngSubmit)="realizarPedido(form.value)">
+        <ion-list no-line>
+          <ion-item>
+            <ion-label stacked>Producto</ion-label>
+            <ion-input ion-text-color='dark' type="text" formControlName="name" disabled='true' value="{{ params.get('name') }}"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label stacked>Precio</ion-label>
+            <ion-input type="text" formControlName="price" disabled='true' value="{{ params.get('price') }}"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label stacked>Cantidad</ion-label>
+            <ion-input type="number" formControlName="quantity"></ion-input>
+          </ion-item>
+        </ion-list>
+        <div padding text-center>
+            <button ion-button [disabled]="!form.valid" (click)="realizarPedido(Pedido)">Agregar</button>
+            <button ion-button color="dark" type="reset" (click)="closeModal()">Borrar</button>
+        </div>
+      </form>
+    </ion-item-group>
+  </section>
+
+</ion-content>

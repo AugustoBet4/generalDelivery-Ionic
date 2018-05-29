@@ -11,6 +11,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import { ProductosPage } from '../../pages/productos/productos';
 import { EmailPage } from './email/email';
 import { SignupPage } from './signup/signup';
+import { BrandPage } from '../brand/brand';
 
 import { ToastController } from 'ionic-angular';
 
@@ -53,7 +54,7 @@ export class LoginPage {
             roles: 'customer',
             mail: this.af.auth.currentUser.email
           });
-        this.navCtrl.push(ProductosPage);
+        this.navCtrl.push(BrandPage);
         let toaster = this.toastr.create({
           message: 'Ingreso Exitoso',
           duration: 3000,
