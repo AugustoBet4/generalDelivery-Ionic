@@ -15,12 +15,17 @@
     </ion-item>
   </ion-list>
   
-  <ion-list *ngIf="isOn">
-      <ion-item *ngFor="let product of productList" (click)="openModal(product.name,product.price)">
-        <ion-icon name = "cart" item-start></ion-icon>
-        <h3>Nombre: {{product.name}}</h3>
-        <h2>Precio: {{product.price}} Bs.</h2>
-      </ion-item>
-    </ion-list>
+  <ion-item *ngIf="isOn">
+      <ion-label>
+        Productos:
+      </ion-label>
+      <ion-select multiple="true" cancelText="Cancelar" okText="Ok" (ionChange)="onChange()">
+        <ion-option *ngFor="let product of productList; let i = index" selected="false" (ionSelect)="addOrder(product.name, product.price)">
+          <ion-icon name = "cart" item-start></ion-icon>
+          <h3>{{product.name}} |</h3>
+          <h2>{{product.price}} Bs.</h2>
+        </ion-option>
+      </ion-select>
+    </ion-item>
 
 </ion-content>

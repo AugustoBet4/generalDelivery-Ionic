@@ -35,14 +35,9 @@ export class ProductProvider {
     });
   }
 
-  insertPedido(pedido: Pedido) {
+  insertPedido(pedido: any) {
     this.productList = this.firebase.list('users/' + this.af.auth.currentUser.uid + '/pedidos/');
-    this.productList.push({
-      name: pedido.name,
-      quantity: pedido.quantity,
-      total: (Number(pedido.quantity) * pedido.price),
-      price: pedido.price
-    });
+    this.productList.push(pedido);
   }
 
   updateProduct(product: Producto) {

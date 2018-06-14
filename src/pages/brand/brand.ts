@@ -28,6 +28,7 @@ export class BrandPage {
 
   user: Users[];
   productList: Producto[];
+  productosSeleccionados: Producto[] = new Array();
   isOn = false;
   subscription: any = '';
 
@@ -87,5 +88,19 @@ export class BrandPage {
     });
     pedido.present();
   }
+  addOrder(name: string, price: string) {
+    var order = new Producto;
+    order.name = name;
+    order.price = price;
+    this.productosSeleccionados.push(order);
+    console.log((this.productosSeleccionados));
+  }
 
+  onChange() {
+    let pedido = this.modalCtrl.create(ModalPage, {order: this.productosSeleccionados});
+    pedido.onDidDismiss(data => {
+      console.log(data);
+    });
+    pedido.present();
+  }
 }
