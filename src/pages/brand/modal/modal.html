@@ -10,25 +10,28 @@
 
   <section>
     <ion-item-group>
-      <form [formGroup]="form" (ngSubmit)="realizarPedido(form.value)">
-        <ion-list no-line>
-          <ion-item>
-            <ion-label stacked>Producto</ion-label>
-            <ion-input ion-text-color='dark' type="text" formControlName="name" disabled='true' value="{{ params.get('name') }}"></ion-input>
-          </ion-item>
-
-          <ion-item>
-            <ion-label stacked>Precio</ion-label>
-            <ion-input type="text" formControlName="price" disabled='true' value="{{ params.get('price') }}"></ion-input>
-          </ion-item>
-
-          <ion-item>
-            <ion-label stacked>Cantidad</ion-label>
-            <ion-input type="number" formControlName="quantity"></ion-input>
-          </ion-item>
+      <form [formGroup]="form">
+        <ion-list>
+          <ion-item-group *ngFor="let product of params.get('order'); let i = index">
+            <ion-item-divider color="light">Productos</ion-item-divider>
+            <ion-item>
+              <ion-label>Nombre</ion-label>
+              <ion-input ion-text-color='dark' type="text" formControlName="name{{i}}" readonly="true" value="{{ product.name }}"></ion-input>    
+            </ion-item>
+            <ion-item>
+              <ion-label>Precio</ion-label>
+              <ion-input ion-text-color='dark' type="text" formControlName="price{{i}}" readonly="true" value="{{ product.price }}"></ion-input>    
+            </ion-item>
+            <ion-item>
+                <ion-input type="number" formControlName="quantity{{i}}" placeholder="Cantidad"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="text" formControlName="note{{i}}" placeholder="Nota"></ion-input>
+            </ion-item>
+          </ion-item-group>
         </ion-list>
         <div padding text-center>
-            <button ion-button [disabled]="!form.valid" (click)="realizarPedido(Pedido)">Agregar</button>
+            <button ion-button [disabled]="!form.valid" (click)="realizarPedido(form.value)">Agregar</button>
             <button ion-button color="dark" type="reset" (click)="closeModal()">Borrar</button>
         </div>
       </form>
