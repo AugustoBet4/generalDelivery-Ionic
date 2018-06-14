@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, ToastController } from 'ionic-angular';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Pedido } from '../../../models/pedido';
 import { ProductProvider } from '../../../providers/product/product';
 import { AngularFireList } from 'angularfire2/database';
-import { Producto } from '../../../models/products';
 
 
 @IonicPage()
@@ -25,24 +24,34 @@ export class ModalPage {
               private params: NavParams,
               private productService: ProductProvider,
               private toastr: ToastController) {
-    this.form = _FB.group({
-      'name0': ['', Validators.required],
-      'price0': ['', Validators.required],
-      'quantity0': ['', Validators.required],
-      'note0': [''],
-      'name1': ['', Validators.required],
-      'price1': ['', Validators.required],
-      'quantity1': ['', Validators.required],
-      'note1': ['']
-      });
+    const formGroup: FormGroup = new FormGroup({});
+    for(var i = 0; i<=params.get('cantidad') ;i++) {
+      var name1: string;
+      name1 = 'name'+i;
+      var price2: string;
+      price2 = 'price'+i;
+      var quantity2: string;
+      quantity2 = 'quantity'+i;
+      var note2: string;
+      note2 = 'note'+i;
+      
+      var control: FormControl = new FormControl (name1, Validators.required);
+      formGroup.addControl(name1, control);
+      control = new FormControl (price2, Validators.required);
+      formGroup.addControl(price2, control);
+      control = new FormControl (quantity2, Validators.required);
+      formGroup.addControl(quantity2, control);
+      control= new FormControl (note2, Validators.required);
+      formGroup.addControl(note2, control);
+    }
+    this.form = formGroup;
   }
 
   realizarPedido(pedido) {
-    console.log(pedido);
     var keys = Object.keys(pedido);
-    var length = (keys.length)/4;
+    var lenght = (keys.length)/4;
     var total:any = 0;
-    for (var j=0; j < length ;j++) {
+    for (var j=0; j < lenght ;j++) {
       for (var i=0; i < length ;i++) {
         if (i%length == 0) {
           var product = new Pedido;
@@ -56,7 +65,6 @@ export class ModalPage {
       }
     }
     this.orden.push(total);
-    console.log(this.orden)
     if (this.orden != undefined){
       this.productService.insertPedido(this.orden);
       let toaster = this.toastr.create({
