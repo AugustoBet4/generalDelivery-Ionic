@@ -11,8 +11,8 @@ import { BrandPage } from '../brand/brand';
 })
 export class TabsPage {
 
-  brandsPage = BrandPage
-  //configPage = ConfiguracionPage;
+  brandsPage = BrandPage;
+  empleadosPage = EmpleadoPage;
 
   constructor (){
     
