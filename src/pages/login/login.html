@@ -15,15 +15,30 @@
 
 <ion-content padding>
 
+    <img src="../../assets/imgs/logo.png" width="300" height="300">
+
+
     <button ion-button icon-start
             (click)='loginFB()'
             id="fb"
             class="btn btn-primary btn-block">
-      <ion-icon name='star' class="fab fa-facebook-square"></ion-icon> Login FB
+      <ion-icon name='star' class="fab fa-facebook-square"></ion-icon> &nbsp; &nbsp;Login FB
     </button><br>
     <!-- <button ion-button (click)='loginGoogle()' id="google" class="btn btn-light btn-block"><i class="fab fa-google"></i> Login Google</button><br> -->
-    <button ion-button (click)='loginEmail()' id="email" class="btn btn-secondary btn-block">Login Email</button><br>
-  
-    <a (click)='signUp()' routerLinkActive='active' class="alc">Sin cuenta? <strong>Crea una!</strong> </a>
+
+    
+    <button ion-button (click)='loginEmail()' id="email" class="btn btn-secondary btn-block"> &nbsp;&nbsp;Login Email</button><br>
+
+    <div class="row">
+        <div class="col col-center text-center">
+          <h4 class="texto">
+
+    <a (click)='signUp()' routerLinkActive='active' class="alc"> Sin cuenta? <strong>Crea una!</strong> </a>
+    
+          </h4>
+            
+  </div>
+
+</div>
 
 </ion-content>

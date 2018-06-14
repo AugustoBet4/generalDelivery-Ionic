@@ -19,6 +19,7 @@
   <div class="alert alert-warning m-2" *ngIf="!empty()">
     <h5 class="text-center text-warning">Ingrese productos para empezar</h5>
   </div>
+  <img src="../../assets/imgs/logo.png" width="300" height="300">
   <ion-list *ngIf="empty()">
     <ion-item *ngFor="let product of productList">
       <ion-icon name = "cart" item-start></ion-icon>
