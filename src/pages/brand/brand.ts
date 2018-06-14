@@ -31,6 +31,7 @@ export class BrandPage {
   productosSeleccionados: Producto[] = new Array();
   isOn = false;
   subscription: any = '';
+  cantidad: number = -1;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -51,7 +52,6 @@ export class BrandPage {
           let x = element.payload.toJSON();
           x["$key"] = element.key;
           this.user.push(x as Users);
-          console.log(this.user);
         });
       });
     }
@@ -81,26 +81,26 @@ export class BrandPage {
     }
   }
 
-  openModal(name: string, price: string) {
-    let pedido = this.modalCtrl.create(ModalPage, {name: name, price: price});
-    pedido.onDidDismiss(data => {
-      console.log(data);
-    });
-    pedido.present();
-  }
   addOrder(name: string, price: string) {
+    this.cantidad = this.cantidad + 1;
     var order = new Producto;
     order.name = name;
     order.price = price;
     this.productosSeleccionados.push(order);
-    console.log((this.productosSeleccionados));
   }
 
   onChange() {
-    let pedido = this.modalCtrl.create(ModalPage, {order: this.productosSeleccionados});
+    if(this.cantidad > -1) {
+      let pedido = this.modalCtrl.create(ModalPage, {order: this.productosSeleccionados, cantidad: this.cantidad});
     pedido.onDidDismiss(data => {
       console.log(data);
     });
     pedido.present();
+    }
+  }
+
+  onCancel() {
+    this.cantidad = -1;
+    this.productosSeleccionados = [];
   }
 }
