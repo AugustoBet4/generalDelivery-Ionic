@@ -29,6 +29,8 @@ import { BrandPage } from '../pages/brand/brand';
 import { ProductProvider } from '../providers/product/product';
 import { UserProvider } from '../providers/user/user';
 import { ModalPage } from '../pages/brand/modal/modal';
+import { EmpleadoPage } from '../pages/empleado/empleado';
+import { TabsPage } from '../pages/tabs/tabs';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { ModalPage } from '../pages/brand/modal/modal';
     EmailPage,
     SignupPage,
     BrandPage,
-    ModalPage
+    ModalPage,
+    EmpleadoPage,
+    TabsPage
   ],
   imports: [
     HttpModule,
@@ -65,7 +69,9 @@ import { ModalPage } from '../pages/brand/modal/modal';
     EmailPage,
     SignupPage,
     BrandPage,
-    ModalPage
+    ModalPage,
+    EmpleadoPage,
+    TabsPage
   ],
   providers: [
     StatusBar,

@@ -45,6 +45,19 @@
   <!-- Ionic's root component and where the app will load -->
   <ion-app></ion-app>
 
+  <ion-header>
+      <ion-navbar>
+        <ion-title>Tabs</ion-title>
+      </ion-navbar>
+    </ion-header>
+    <ion-tabs>
+        <ion-tab tabIcon="contact" [root]="tab1"></ion-tab>
+        <ion-tab tabIcon="compass" [root]="tab2"></ion-tab>
+        <ion-tab tabIcon="analytics" [root]="tab3"></ion-tab>
+        <ion-tab tabIcon="settings" [root]="tab4"></ion-tab>
+      </ion-tabs>`
+    
+
   <!-- The polyfills js is generated during the build process -->
   <script src="build/polyfills.js"></script>
 

@@ -14,6 +14,7 @@ import { SignupPage } from './signup/signup';
 import { BrandPage } from '../brand/brand';
 
 import { ToastController } from 'ionic-angular';
+import { TabsPage } from '../tabs/tabs';
 
 @IonicPage()
 @Component({
@@ -54,7 +55,7 @@ export class LoginPage {
             roles: 'customer',
             mail: this.af.auth.currentUser.email
           });
-        this.navCtrl.push(BrandPage);
+        this.navCtrl.push(TabsPage);
         let toaster = this.toastr.create({
           message: 'Ingreso Exitoso',
           duration: 3000,
