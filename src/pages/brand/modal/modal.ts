@@ -57,16 +57,16 @@ export class ModalPage {
     }
     this.orden.push(total);
     console.log(this.orden)
-    // if (this.orden != undefined){
-    //   this.productService.insertPedido(pedido);
-    //   let toaster = this.toastr.create({
-    //     message: 'Operación Exitosa\n Pedido Agregado',
-    //     duration: 3000,
-    //     position: 'top',
-    //     cssClass: 'toastcorrect'
-    //   });
-    //   toaster.present();
-    // }
+    if (this.orden != undefined){
+      this.productService.insertPedido(this.orden);
+      let toaster = this.toastr.create({
+        message: 'Operación Exitosa\n Pedido Agregado',
+        duration: 3000,
+        position: 'top',
+        cssClass: 'toastcorrect'
+      });
+      toaster.present();
+    }
   }
 
   closeModal() {
