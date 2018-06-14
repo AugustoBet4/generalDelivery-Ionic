@@ -13,9 +13,7 @@ export class TabsPage {
 
   brandsPage = BrandPage;
   empleadosPage = EmpleadoPage;
+  productosPage = ProductosPage;
 
-  constructor (){
-    
-  }
 
 }
