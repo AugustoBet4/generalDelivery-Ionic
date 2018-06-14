@@ -24,6 +24,7 @@ import { LoginPage } from '../pages/login/login';
 import { EmailPage } from '../pages/login/email/email';
 import { SignupPage } from '../pages/login/signup/signup';
 import { BrandPage } from '../pages/brand/brand';
+import { SettingsPage} from '../pages/settings/settings'
 
 //SERVICIOS
 import { ProductProvider } from '../providers/product/product';
@@ -44,7 +45,8 @@ import { TabsPage } from '../pages/tabs/tabs';
     BrandPage,
     ModalPage,
     EmpleadoPage,
-    TabsPage
+    TabsPage,
+    SettingsPage
   ],
   imports: [
     HttpModule,
@@ -71,7 +73,8 @@ import { TabsPage } from '../pages/tabs/tabs';
     BrandPage,
     ModalPage,
     EmpleadoPage,
-    TabsPage
+    TabsPage,
+    SettingsPage
   ],
   providers: [
     StatusBar,
