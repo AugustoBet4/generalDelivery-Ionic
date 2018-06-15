@@ -8,14 +8,27 @@ import { AngularFireAuth } from 'angularfire2/auth';
 @Injectable()
 export class UserProvider {
 
-  user: any;
+  userList: AngularFireList<any>;
+  selectedUser: Users = new Users();
+
 
   constructor(public http: HttpClient,
               private firebase: AngularFireDatabase,
               private af: AngularFireAuth) {
   }
   getUsers() {
-    return this.user = this.firebase.list('users/');
+    return this.userList = this.firebase.list('users/');
   }
+
+  updateUser(user: Users) {
+    this.userList.update(user.$key, {
+      name: user.name,
+      direction: user.direction,
+      nit: user.nit,
+      telefono: user.phone     
+    });
+  }
+
+  
 
 }
