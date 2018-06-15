@@ -8,8 +8,18 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor='let order of ordersList'>
-      
+    <ion-item *ngFor='let order of ordersList; let i = index'>
+    <ion-item-divider color="light" text-center text-wrap (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
+      Pedido #{{ i+1 }}
+      <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+    </ion-item-divider>
+      <div *ngIf="isGroupShown(i)">
+        <p>Producto: {{ order[1].name }}</p>
+        <p>Precio: {{ order[1].price }}</p>
+        <p>Cantidad: {{ order[1].quantity }}</p>
+        <p>Nota: {{ order[1].note }}</p>
+        <p>Total: {{ order[2] }}</p>
+      </div>
     </ion-item>
   </ion-list>  
 </ion-content>

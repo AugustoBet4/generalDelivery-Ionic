@@ -15,6 +15,7 @@ export class EmpleadoPage {
   order: Pedido[];
   ordersList: Pedido[];
   subscription: any = '';
+  shownGroup = null;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -31,17 +32,27 @@ export class EmpleadoPage {
         this.ordersList = [];
         item.forEach(element => {
           let x = element.payload.toJSON();
-          x["$key"] = element.key;
-          console.log('x: '+x);
+          x['$key'] = element.key;
           this.ordersList.push(x as Pedido);
+          //console.log(JSON.stringify(this.ordersList, null, 4));
         });
       });
-      console.log(this.ordersList);
     }
     else{
       this.af.auth.signOut();
       this.navCtrl.push(LoginPage);
     }
+  }
+
+  toggleGroup(group) {
+    if (this.isGroupShown(group)) {
+        this.shownGroup = null;
+    } else {
+        this.shownGroup = group;
+    }
+  }
+  isGroupShown(group) {
+      return this.shownGroup === group;
   }
 
 }
