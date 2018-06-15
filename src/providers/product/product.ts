@@ -4,8 +4,6 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Producto } from '../../models/products';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { ProductosPage } from '../../pages/productos/productos';
-import { Pedido } from '../../models/pedido';
 
 @Injectable()
 export class ProductProvider {
@@ -36,7 +34,7 @@ export class ProductProvider {
   }
 
   insertPedido(pedido: any) {
-    this.productList = this.firebase.list('users/' + this.af.auth.currentUser.uid + '/pedidos/');
+    this.productList = this.firebase.list('pedidos/');
     this.productList.push(pedido);
   }
 

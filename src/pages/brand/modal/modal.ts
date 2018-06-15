@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { Pedido } from '../../../models/pedido';
 import { ProductProvider } from '../../../providers/product/product';
 import { AngularFireList } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 
 @IonicPage()
@@ -23,6 +24,7 @@ export class ModalPage {
               private _FB: FormBuilder,
               private params: NavParams,
               private productService: ProductProvider,
+              public af: AngularFireAuth,
               private toastr: ToastController) {
     const formGroup: FormGroup = new FormGroup({});
     for(var i = 0; i<=params.get('cantidad') ;i++) {
@@ -51,10 +53,14 @@ export class ModalPage {
     var keys = Object.keys(pedido);
     var lenght = (keys.length)/4;
     var total:any = 0;
+    var product: Pedido;
+    var currentUser: any;
+    currentUser = this.af.auth.currentUser.uid;
+    this.orden.push(currentUser);
     for (var j=0; j < lenght ;j++) {
       for (var i=0; i < length ;i++) {
         if (i%length == 0) {
-          var product = new Pedido;
+          product = new Pedido;
           product.name = eval("pedido.name" + j);
           product.price = eval("pedido.price" + j);
           product.quantity = eval("pedido.quantity"+j);

@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the EmpleadoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { Pedido } from '../../models/pedido';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { OrdersProvider } from '../../providers/orders/orders';
+import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
@@ -15,11 +12,36 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class EmpleadoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  order: Pedido[];
+  ordersList: Pedido[];
+  subscription: any = '';
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public ordersService: OrdersProvider,
+              public toastr: ToastController,
+              public af: AngularFireAuth) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EmpleadoPage');
+  ngOnInit() {
+    if (this.af.auth.currentUser !== null){
+      this.subscription = this.ordersService.getOrders()
+      .snapshotChanges()
+      .subscribe(item => {
+        this.ordersList = [];
+        item.forEach(element => {
+          let x = element.payload.toJSON();
+          x["$key"] = element.key;
+          console.log('x: '+x);
+          this.ordersList.push(x as Pedido);
+        });
+      });
+      console.log(this.ordersList);
+    }
+    else{
+      this.af.auth.signOut();
+      this.navCtrl.push(LoginPage);
+    }
   }
 
 }

@@ -32,6 +32,7 @@ import { UserProvider } from '../providers/user/user';
 import { ModalPage } from '../pages/brand/modal/modal';
 import { EmpleadoPage } from '../pages/empleado/empleado';
 import { TabsPage } from '../pages/tabs/tabs';
+import { OrdersProvider } from '../providers/orders/orders';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { TabsPage } from '../pages/tabs/tabs';
     ProductProvider,
     AngularFireAuth,
     UserProvider,
-    GooglePlus
+    GooglePlus,
+    OrdersProvider
   ]
 })
 export class AppModule {}

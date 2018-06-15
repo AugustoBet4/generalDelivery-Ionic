@@ -9,7 +9,7 @@ import { FirebaseAuth } from '@firebase/auth-types';
 
 import { ToastController } from 'ionic-angular';
 
-import { ProductosPage } from '../../productos/productos';
+import { EmpleadoPage } from '../../empleado/empleado';
 @IonicPage()
 @Component({
   selector: 'page-email',
@@ -30,7 +30,7 @@ export class EmailPage {
               public toastr: ToastController) {
   this.af.authState.subscribe( auth => {
     if(auth) {
-      this.navCtrl.push(ProductosPage);
+      this.navCtrl.push(EmpleadoPage);
     }
   });
   }
@@ -46,7 +46,7 @@ export class EmailPage {
             cssClass: 'toastcorrect'
           });
           toaster.present();
-          this.navCtrl.push(ProductosPage);
+          this.navCtrl.push(EmpleadoPage);
         }).catch(
           (error) => {
             let toaster = this.toastr.create({
