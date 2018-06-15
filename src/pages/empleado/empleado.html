@@ -21,10 +21,10 @@
         <p ion-text color='dark'>Total: {{ !last ? order[2] +'Bs.': order[3] +'Bs.' }}</p>
         <div class="row">
           <div class="col">
-            <button ion-button round outline padding-horizontal color='secondary'>Entregado</button>
+            <button ion-button round outline padding-horizontal color='secondary' (click)='orderDelivered()'>Entregado</button>
           </div>
           <div class="col">
-            <button ion-button round outline padding-horizontal>En Camino</button>
+            <button ion-button round outline padding-horizontal (click)='orderInComing()'>En Camino</button>
           </div>
         </div>
       </div>
