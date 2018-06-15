@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { EmpleadoPage } from '../empleado/empleado';
-import { ProductosPage } from '../productos/productos';
 import { BrandPage } from '../brand/brand';
+import { SettingsPage } from '../settings/settings';
 
 @Component({
   selector: 'page-tabs',
@@ -13,7 +13,7 @@ export class TabsPage {
 
   brandsPage = BrandPage;
   empleadosPage = EmpleadoPage;
-  productosPage = ProductosPage;
+  settingsPage = SettingsPage;
 
 
 }

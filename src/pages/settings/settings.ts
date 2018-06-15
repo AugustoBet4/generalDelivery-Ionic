@@ -7,12 +7,6 @@ import { AngularFireList } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LoginPage } from '../login/login';
 
-/**
- * Generated class for the SettingsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -29,21 +23,19 @@ export class SettingsPage {
 
 
   constructor(public navCtrl: NavController, 
-     public navParams: NavParams,
-     public userService: UserProvider,
-     public toastr: ToastController,
-     public af: AngularFireAuth,
-     private _FB: FormBuilder) {
-      this.form = _FB.group({
-        'users' : _FB.group({
-          '$key': ['', Validators.required],
-          'name': ['', Validators.required],
-          'direction': ['', Validators.required],
-          'nit': ['', Validators.required],
-          'phone': ['', Validators.required],
-        }),
-      });
-    }
+              public navParams: NavParams,
+              public userService: UserProvider,
+              public toastr: ToastController,
+              public af: AngularFireAuth,
+              private _FB: FormBuilder) {
+    this.form = _FB.group({
+      '$key': [],
+      'name': ['', Validators.required],
+      'direction': ['', Validators.required],
+      'nit': ['', Validators.required],
+      'phone': ['', Validators.required],
+    });
+  }
 
     ngOnInit() {
       if (this.af.auth.currentUser !== null){
@@ -64,9 +56,6 @@ export class SettingsPage {
       }
     }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingsPage');
-  }
   onSubmit(usuario: Users) {
     if (usuario !== undefined){
       this.userService.updateUser(usuario);
