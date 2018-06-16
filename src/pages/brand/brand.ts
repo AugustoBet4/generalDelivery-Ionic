@@ -32,6 +32,7 @@ export class BrandPage {
   isOn = false;
   subscription: any = '';
   cantidad: number = -1;
+  $keyCompany: string;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -61,10 +62,11 @@ export class BrandPage {
     }
   }
 
-  productsByCompany($key: string) {
+  productsByCompany($keyCompany) {
     if (this.af.auth.currentUser !== null){
       this.isOn =! this.isOn;
-      this.subscription = this.productService.getProductByCompany($key)
+      this.$keyCompany = $keyCompany;
+      this.subscription = this.productService.getProductByCompany($keyCompany)
       .snapshotChanges()
       .subscribe(item => {
       this.productList = [];
@@ -91,7 +93,7 @@ export class BrandPage {
 
   onChange() {
     if(this.cantidad > -1) {
-      let pedido = this.modalCtrl.create(ModalPage, {order: this.productosSeleccionados, cantidad: this.cantidad});
+      let pedido = this.modalCtrl.create(ModalPage, {order: this.productosSeleccionados, cantidad: this.cantidad, key: this.$keyCompany});
     pedido.onDidDismiss(data => {
       console.log(data);
     });

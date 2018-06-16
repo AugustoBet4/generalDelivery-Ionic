@@ -57,6 +57,7 @@ export class ModalPage {
     var currentUser: any;
     currentUser = this.af.auth.currentUser.uid;
     this.orden.push(currentUser);
+    this.orden.push(this.params.get('key'));
     for (var j=0; j < lenght ;j++) {
       for (var i=0; i < length ;i++) {
         if (i%length == 0) {
