@@ -25,7 +25,7 @@ export class UserProvider {
       name: user.name,
       direction: user.direction,
       nit: user.nit,
-      telefono: user.phone     
+      phone: user.phone     
     });
   }
 

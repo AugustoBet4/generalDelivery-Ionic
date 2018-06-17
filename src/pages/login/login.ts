@@ -1,17 +1,14 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import { GooglePlus } from '@ionic-native/google-plus';
 
-import { ProductosPage } from '../../pages/productos/productos';
 import { EmailPage } from './email/email';
 import { SignupPage } from './signup/signup';
-import { BrandPage } from '../brand/brand';
 
 import { ToastController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
