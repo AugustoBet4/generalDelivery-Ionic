@@ -1,8 +1,10 @@
 page-settings {
-
-}
-.images{
-    align-items: center;
-    height: 100;
-    width: 100;
+    .images{
+        align-items: center;
+        height: 100;
+        width: 100;
+    }
+    .item {
+        margin: 0px !important;
+    }
 }

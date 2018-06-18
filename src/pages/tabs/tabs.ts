@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { EmpleadoPage } from '../empleado/empleado';
 import { BrandPage } from '../brand/brand';
 import { SettingsPage } from '../settings/settings';
+import { NotificationsPage } from '../notifications/notifications';
 
 @Component({
   selector: 'page-tabs',
@@ -10,7 +10,7 @@ import { SettingsPage } from '../settings/settings';
 export class TabsPage {
 
   brandsPage = BrandPage;
-  empleadosPage = EmpleadoPage;
+  notificationsPage = NotificationsPage;
   settingsPage = SettingsPage;
 
 }

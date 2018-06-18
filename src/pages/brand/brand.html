@@ -9,13 +9,13 @@
 
 <ion-content padding-horizontal text-center>
   <ion-list *ngFor="let us of user">
-    <ion-item *ngIf="us.roles == 'client'" (click)=productsByCompany(us.$key)>
+    <ion-item no-lines *ngIf="us.roles == 'client'" (click)=productsByCompany(us.$key)>
       <ion-icon name = "cart" item-start></ion-icon>
       <h2>{{ us.name ? us.name : 'No tiene nombre' }}</h2>
     </ion-item>
   </ion-list>
   
-  <ion-item *ngIf="isOn">
+  <ion-item *ngIf="isOn" no-lines>
       <ion-label>
         Productos:
       </ion-label>

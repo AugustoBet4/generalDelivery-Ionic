@@ -1,0 +1,27 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Notificaciones</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list *ngFor="let not of notifications, let i = index">
+    <ion-item text-wrap no-lines *ngIf='isMine(i) && notifications[i].body == "El pedido se encuentra en camino."'>
+      <div class='notification-inway'>
+        <ion-icon name = "notifications"></ion-icon>
+        <h2>{{ not.body }}</h2>
+      </div>
+    </ion-item>
+    <ion-item text-wrap no-lines *ngIf='isMine(i) && notifications[i].body == "El pedido se entrego."'>
+      <div class="notification-ready">
+        <ion-icon name = "notifications-outline"></ion-icon>
+        <h2>{{ not.body }}</h2>
+      </div>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

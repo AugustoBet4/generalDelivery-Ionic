@@ -34,4 +34,5 @@ export class OrdersProvider {
   getNotifications() {
     return this.notificationList = this.firebase.list('notifications/');
   }
+  
 }

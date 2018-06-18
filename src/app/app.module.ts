@@ -33,6 +33,7 @@ import { ModalPage } from '../pages/brand/modal/modal';
 import { EmpleadoPage } from '../pages/empleado/empleado';
 import { TabsPage } from '../pages/tabs/tabs';
 import { OrdersProvider } from '../providers/orders/orders';
+import { NotificationsPage } from '../pages/notifications/notifications';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { OrdersProvider } from '../providers/orders/orders';
     ModalPage,
     EmpleadoPage,
     TabsPage,
-    SettingsPage
+    SettingsPage,
+    NotificationsPage
   ],
   imports: [
     HttpModule,
@@ -75,7 +77,8 @@ import { OrdersProvider } from '../providers/orders/orders';
     ModalPage,
     EmpleadoPage,
     TabsPage,
-    SettingsPage
+    SettingsPage,
+    NotificationsPage
   ],
   providers: [
     StatusBar,
