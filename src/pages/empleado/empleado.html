@@ -15,11 +15,19 @@
               <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
             </ion-item-divider>
               <div *ngIf="isGroupShown(i)">
+<<<<<<< HEAD
                 <p ion-text color='dark'>Producto: {{ moreThanOne(order) ? order[2].name : order[2].name +'   | |   '+ order[3].name }}</p>
                 <p ion-text color='dark'>Precio: {{ moreThanOne(order) ? order[2].price +'Bs.' : order[2].price +'Bs.   | |  '+ order[3].price +'Bs.'}}</p>
                 <p ion-text color='dark'>Cantidad: {{ moreThanOne(order) ? order[2].quantity + ' u.' : order[2].quantity +' u.   | |  '+ order[3].quantity + ' u.' }}</p>
                 <!-- <p ion-text color='dark'>Nota: {{ !last? order[1].note : order[1].note +'   | | '+ order[2].note}}</p> -->
                 <p ion-text color='dark'>Total: {{ moreThanOne(order) ? order[3] +'Bs.': order[4] +'Bs.' }}</p>
+=======
+                <p ion-text color='dark'>Producto: {{ !last? order[2].name : order[2].name }}</p>
+                <p ion-text color='dark'>Precio: {{ !last? order[2].price +'Bs.' : order[2].price}}</p>
+                <p ion-text color='dark'>Cantidad: {{ !last? order[2].quantity + ' u.' : order[2].quantity}}</p>
+                <!-- <p ion-text color='dark'>Nota: {{ !last? order[1].note : order[1].note +'   | | '+ order[2].note}}</p> -->
+                <p ion-text color='dark'>Total: {{ !last ? order[3] +'Bs.': order[3] +'Bs.' }}</p>
+>>>>>>> 72897bad787159714848f8dc7831b313ba006188
                 <div class="row">
                   <div class="col">
                     <button ion-button round outline padding-horizontal color='secondary' (click)='orderDelivered(order.$key)'>Entregado</button>
