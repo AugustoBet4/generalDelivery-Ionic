@@ -104,7 +104,6 @@ export class EmpleadoPage {
 
   moreThanOne(orden) {
     if ( Object.keys(orden).length < 6) {
-      console.log(Object.keys(orden).length);
       return true;
     }
   }
