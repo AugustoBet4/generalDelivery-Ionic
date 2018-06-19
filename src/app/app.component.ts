@@ -14,7 +14,7 @@ import { EditarProductoPage } from '../pages/editar-producto/editar-producto';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = EditarProductoPage;
+  rootPage:any = LoginPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
