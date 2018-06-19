@@ -61,6 +61,7 @@ export class SettingsPage {
             this.actualUser.phone = this.userList[i].phone;
           }
           }
+          console.log(this.actualUser);
         });
       }
       else{
