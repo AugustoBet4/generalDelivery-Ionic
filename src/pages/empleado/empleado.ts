@@ -93,4 +93,19 @@ export class EmpleadoPage {
     }
   }
 
+  alreadyInComing(n) {
+    if(!isEmpty(this.notificationsList) && this.notificationsList != undefined) {
+      for(var i = 0; i < (this.notificationsList).length ;i++) {
+        if((this.ordersList[n].$key === this.notificationsList[i].orderkey) && ((this.notificationsList[i].body.toString() === 'El pedido se encuentra en camino.')))
+          return true;
+      }
+    }
+  }
+
+  moreThanOne(orden) {
+    if ( Object.keys(orden).length < 6) {
+      console.log(Object.keys(orden).length);
+      return true;
+    }
+  }
 }
